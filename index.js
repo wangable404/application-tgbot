@@ -17,10 +17,13 @@ app.post("/webhook", async (req, res) => {
   try {
     console.log(req.body, 'render tg notify');
     
-    await axios.post(MAIN_BACKEND_URL, req.body, {
+    const response = await axios.post(MAIN_BACKEND_URL, req.body, {
       headers: { "x-relay-secret": RELAY_SECRET },
       timeout: 8000,
     });
+
+    console.log(response);
+    
   } catch (err) {
     console.log("forward to main backend failed:", err.message);
   }
