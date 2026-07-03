@@ -15,6 +15,8 @@ const TG_API = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}`;
 
 app.post("/webhook", async (req, res) => {
   try {
+    console.log(req.body, 'render tg notify');
+    
     await axios.post(MAIN_BACKEND_URL, req.body, {
       headers: { "x-relay-secret": RELAY_SECRET },
       timeout: 8000,
@@ -27,6 +29,9 @@ app.post("/webhook", async (req, res) => {
 
 app.post("/send", async (req, res) => {
   const { secret, chatId, text } = req.body;
+
+  console.log('новое сообщените', chatId, text, secret);
+  
 
   if (secret !== RELAY_SECRET) {
     return res.status(403).json({ error: "forbidden" });
