@@ -22,7 +22,9 @@ app.post("/webhook", async (req, res) => {
       timeout: 8000,
     });
 
-    console.log(response);
+    console.log('otvet', response);
+    console.log('url', MAIN_BACKEND_URL);
+    
     
   } catch (err) {
     console.log("forward to main backend failed:", err.message);
