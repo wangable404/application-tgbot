@@ -66,12 +66,6 @@ app.post("/max/webhook", async (req, res) => {
 app.post("/max/send", async (req, res) => {
   const { secret, text, chatId } = req.body;
 
-  console.log(secret,'sadsd');
-  console.log(text);
-  console.log(chatId);
-  
-  
-
   if (secret !== RELAY_SECRET) {
     return res.status(403).json({ error: "forbidden" });
   }
@@ -79,7 +73,7 @@ app.post("/max/send", async (req, res) => {
     `${MAX_API}/messages`,
     { text },
     {
-      params: { chat_id },
+      params: { chat_id: chatId },
       headers: { Authorization: TOKEN, "Content-Type": "application/json" },
     },
   );
