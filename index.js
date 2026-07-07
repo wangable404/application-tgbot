@@ -53,6 +53,11 @@ app.post("/tg/send", async (req, res) => {
 
 app.post("/max/webhook", async (req, res) => {
   try {
+    console.log(MAX_BACKEND_URL,'asdasa');
+    console.log(RELAY_SECRET,'asdasa222');
+    console.log(req.body);
+    
+    
     const response = await axios.post(MAX_BACKEND_URL, req.body, {
       headers: { "x-relay-secret": RELAY_SECRET },
       timeout: 8000,
