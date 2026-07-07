@@ -59,7 +59,7 @@ app.post("/max/webhook", async (req, res) => {
     
     
     const response = await axios.post(MAX_BACKEND_URL, req.body, {
-      headers: { "x-relay-secret": RELAY_SECRET },
+      headers: { "x-max-bot-api-secret": RELAY_SECRET },
       timeout: 8000,
     });
   } catch (err) {
