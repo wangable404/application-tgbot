@@ -53,11 +53,6 @@ app.post("/tg/send", async (req, res) => {
 
 app.post("/max/webhook", async (req, res) => {
   try {
-    console.log(MAX_BACKEND_URL,'asdasa');
-    console.log(RELAY_SECRET,'asdasa222');
-    console.log(req.body);
-    
-    
     const response = await axios.post(MAX_BACKEND_URL, req.body, {
       headers: { "x-max-bot-api-secret": RELAY_SECRET },
       timeout: 8000,
@@ -70,6 +65,12 @@ app.post("/max/webhook", async (req, res) => {
 
 app.post("/max/send", async (req, res) => {
   const { secret, text, chatId } = req.body;
+
+  console.log(secret,'sadsd');
+  console.log(text);
+  console.log(chatId);
+  
+  
 
   if (secret !== RELAY_SECRET) {
     return res.status(403).json({ error: "forbidden" });
