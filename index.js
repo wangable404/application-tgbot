@@ -7,6 +7,8 @@ app.use(express.json());
 
 const {
   TELEGRAM_BOT_TOKEN,
+  MAX_BOT_TOKEN,
+  MAX_BOT_USERNAME,
   RELAY_SECRET,
   TG_BACKEND_URL,
   MAX_BACKEND_URL,
@@ -74,7 +76,7 @@ app.post("/max/send", async (req, res) => {
     { text },
     {
       params: { chat_id: chatId },
-      headers: { Authorization: TOKEN, "Content-Type": "application/json" },
+      headers: { Authorization: MAX_BOT_TOKEN, "Content-Type": "application/json" },
     },
   );
 });
